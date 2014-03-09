@@ -1,0 +1,25 @@
+= simple_form_for @order,
+  url: check_out_copies_path,
+  remote: request.xhr?,
+  html: { class: 'form-stacked', id: 'check-out' } do |f|
+
+  = render partial: 'reservations'
+  - unless @show_user_fields
+    .lend-another-user.form-group
+      .radio
+        = radio_button_tag 'order[user_id]', '0', @new_user_chosen, id: 'order_user_id_nil'
+        = label_tag "order_user_id_nil", t('.another_user')
+    hr.hr-sm
+  = hidden_field_tag 'order[user_id]', nil, disabled: true, id: 'autocompleted-user-id'
+  = render partial: 'user_fields', locals: { f: f }
+  .user-data
+  .row
+    .col-xs-6
+      .input-daterange.input-group.row
+        .col-xs-6= f.input :from, as: :calendar, label: t('.from')
+        .col-xs-6= f.input :due, as: :calendar, label: t('.to')
+    .col-xs-6= f.input :notes
+  .row
+    .col-xs-12.submit
+      = hidden_field_tag 'order[copy_id]', @copy.id
+      = f.button :submit, class: "btn btn-success"

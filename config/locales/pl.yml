@@ -1,0 +1,396 @@
+pl:
+  project_name: Biblioteka Górska
+  none: brak
+  loading: "Wczytuję..."
+
+  views:
+    pagination:
+      first: "&laquo; Pierwsza"
+      last: "Ostatnia &raquo;"
+      previous: "&lsaquo; Poprzednia"
+      next: "Następna &rsaquo;"
+      truncate: "..."
+
+  menu:
+    home: "Strona główna"
+    books: "Książki"
+    about: "Informacje"
+    skg_site: "Przejdź do strony SKG"
+    create_book: "+ Dodaj książkę"
+
+  home:
+    about:
+      books_search_html: "Szukaj książek &raquo;"
+      text: |
+        "Biblioteka Górska istnieje w SKG już od 1982 roku.
+        Przez ten czas zebrała w swych zbiorach wiele cennych książek,
+        przewodników i map, zarówno polskich i zagranicznych. Myliłby się
+        jednak ten, który widziałby ją jako zbiorowisko starych tomisk pokrytych
+        kurzem - dzięki stałej współpracy z rozmaitymi wydawnictwami, do
+        Biblioteki stale napływają nowiutkie egzemplarze pachnące jeszcze farbą
+        drukarską."
+
+  shared:
+    header:
+      or: "lub"
+      login: "Zaloguj się"
+      register: "Zarejestruj się"
+      logout: "Wyloguj się"
+
+    email_footer:
+      regards: Pozdrawiamy,
+      team_html: '<a href="http://skg.uw.edu.pl">skg.uw.edu.pl</a>'
+
+    email_header:
+      title: Witamy!
+
+  user_mailer:
+    welcome_email:
+      subject: "Witaj w bibliotece górskiej SKG!"
+      welcome: "Cześć %{name},"
+      welcome_text: "Trzeba tu coś wpisać ;)."
+
+    reservation_created_email:
+      welcome: "Cześć %{name},"
+
+
+  books:
+    filters:
+      search: "Szukaj"
+      category: "Kategoria"
+      title_prompt: "Tytuł"
+      category_prompt: "Wybierz kategorię"
+    login_and_reserve:
+      submit: "Zaloguj się i zamów książkę"
+      notes: "Uwagi do tego zamówienia"
+    register_and_reserve:
+      submit: "Zarejestruj się i zamów książkę"
+      notes: "Uwagi do tego zamówienia"
+    anonymous_reservation:
+      dont_want_account_explanation_html: "Żeby wypożyczyć książkę nie posiadając konta potrzebne będzie trochę inwencji twórczej i starodawnych metod. Skontaktuj się z obsługą biblioteki pod adresem <strong><a href=\"mailto:biblioteka@skg.uw.edu.pl\">biblioteka[at]skg.uw.edu.pl</a></strong> podając tytuł i autora wybranej książki."
+    book:
+      reserved: "Zamówiłaś/eś"
+      reserve: "Zamów"
+    reserve:
+      dont_want_account_html: "Nie chcę zakładać konta &raquo;"
+      have_account_html: "Mam już konto &raquo;"
+      want_account_html: "Nie mam konta i chcę założyć &raquo;"
+      reserve: "Zamów: %{title}"
+      notes: "Uwagi do tego zamówienia"
+      submit: "Zamów książkę"
+
+      title: "Tytuł:"
+      author: "Autor:"
+      category: "Kategoria:"
+      details: "Szczegóły:"
+    copies:
+      add_new_copy: "Dodaj egzemplarz"
+
+
+    list:
+      title: "Tytuł"
+      author: "Autor"
+      category: "Kategoria"
+      to_be_borrowed: "Wypożycz"
+      borrowed: "Przyjmij zwrot"
+      reserved_count: "Zamówionych"
+      borrowed_count: "Wypożyczonych"
+      copies_count: "Do zamówienia"
+      edit: "Edytuj"
+      destroy: "Usuń"
+      reserve: "Zamów"
+    edit:
+      title: "Edytuj książkę"
+    new:
+      title: "Nowa książka"
+
+  copies:
+    show:
+      check_out: "Wypożycz: %{title}"
+      lend_book: "Wypożycz książkę"
+    copy:
+      title: "Tytuł:"
+      author: "Autor:"
+      category: "Kategoria:"
+      index: "Indeks:"
+      publication: "Wydanie:"
+      details: "Szczegóły:"
+    user_data:
+      name: "Imię i nazwisko:"
+      email: "Email:"
+      phone: "Telefon:"
+    user_fields:
+      name: "Imię i nazwisko:"
+      email: "Email:"
+      phone: "Telefon:"
+    check_out:
+      another_user: "Wypożycz innej osobie"
+      from: Od
+      to: Do
+    check_in:
+      lended: "Wypożyczono:"
+    new:
+      title: "Nowy egzemplarz"
+    edit:
+      title: "Edytuj egzemplarz"
+
+  devise:
+    sessions:
+      new:
+        sign_in: "Zaloguj się"
+    registrations:
+      new:
+        sign_up: "Zarejestruj się"
+      edit:
+        sign_up: "Zarejestruj się"
+    shared:
+      links:
+        sign_in: "Zaloguj się"
+        sign_up: "Zarejestruj się"
+        forgot_your_password: "Zapomniałaś/eś hasła?"
+
+  flash:
+    authentication:
+      email_or_password_invalid: "Email lub hasło są nieprawidłowe."
+    actions:
+      create:
+        success: "%{resource_name} został stworzony poprawnie!"
+        error: "Ups, na formie są błędy, popraw je i spróbuj ponownie."
+      update:
+        error: "Ups, na formie są błędy, popraw je i spróbuj ponownie."
+    orders:
+      create:
+        success: "Książka o indeksie %{index} została wypożyczona!"
+      check_in:
+        success: "Książka o indeksie %{index} została zwrócona!"
+
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%d %b"
+      long: "%B %d, %Y"
+      order: "%d %B, %Y"
+
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "przed południem"
+    pm: "po południu"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " i "
+      last_word_connector: " oraz "
+
+    select:
+      prompt: "Proszę wybrać"
+
+  number:
+    format:
+      separator: ","
+      delimiter: " "
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%u %n"
+        unit: "PLN"
+        separator: ","
+        delimiter: " "
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: true
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "bajt"
+            other: "bajty"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: Tysiąc
+          million: Milion
+          billion: Miliard
+          trillion: Bilion
+          quadrillion: Biliard
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "pół minuty"
+      less_than_x_seconds:
+        one:   "mniej niż sekundę"
+        few:   "mniej niż %{count} sekundy"
+        other: "mniej niż %{count} sekund"
+      x_seconds:
+        one:   "1 sekunda"
+        few:   "%{count} sekundy"
+        other: "%{count} sekund"
+      less_than_x_minutes:
+        one:   "mniej niż minutę"
+        few:   "mniej niż %{count} minuty"
+        other: "mniej niż %{count} minut"
+      x_minutes:
+        one:   "1 minuta"
+        few:   "%{count} minuty"
+        other: "%{count} minut"
+      about_x_hours:
+        one:   "około godziny"
+        few:   "około %{count} godziny"
+        other: "około %{count} godzin"
+      x_days:
+        one:   "1 dzień"
+        few:   "%{count} dni"
+        other: "%{count} dni"
+      about_x_months:
+        one:   "około miesiąca"
+        few:   "około %{count} miesiące"
+        other: "około %{count} miesięcy"
+      x_months:
+        one:   "1 miesiąc"
+        few:   "%{count} miesiące"
+        other: "%{count} miesięcy"
+      about_x_years:
+        one:   "około rok"
+        few:   "około %{count} lata"
+        other: "około %{count} lat"
+      over_x_years:
+        one:   "ponad rok"
+        few:   "ponad %{count} lata"
+        other: "ponad %{count} lat"
+      almost_x_years:
+        one:   "prawie rok"
+        few:   "prawie %{count} lata"
+        other: "prawie %{count} lat"
+    prompts:
+      year:   "Rok"
+      month:  "Miesiąc"
+      day:    "Dzień"
+      hour:   "Godzina"
+      minute: "Minuta"
+      second: "Sekundy"
+
+  helpers:
+    select:
+      prompt: "Proszę wybrać"
+
+    submit:
+      create: 'Utwórz %{model}'
+      update: 'Aktualizuj %{model}'
+      submit: 'Zapisz %{model}'
+      book:
+        create: 'Utwórz książkę'
+        update: 'Aktualizuj książkę'
+        submit: 'Zapisz książkę'
+      order:
+        create: 'Wypożycz książkę'
+        submit: 'Wypożycz książkę'
+        update: 'Zwróć książkę'
+
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "nie znajduje się na liście dopuszczalnych wartości"
+      exclusion: "jest zarezerwowane"
+      invalid: "jest nieprawidłowe"
+      confirmation: "nie zgadza się z potwierdzeniem"
+      accepted: "musi zostać zaakceptowane"
+      empty: "nie może być puste"
+      blank: "nie może być puste"
+      too_long: "jest za długie (maksymalnie %{count} znaków)"
+      too_short: "jest za krótkie (przynajmniej %{count} znaków)"
+      wrong_length: "ma nieprawidłową długość (powinna wynosić %{count} znaków)"
+      not_a_number: "nie jest liczbą"
+      not_an_integer: "musi być liczbą całkowitą"
+      greater_than: "musi być większe od %{count}"
+      greater_than_or_equal_to: "musi być większe lub równe %{count}"
+      equal_to: "musi być równe %{count}"
+      less_than: "musi być mniejsze od %{count}"
+      less_than_or_equal_to: "musi być mniejsze lub równe %{count}"
+      odd: "musi być nieparzyste"
+      even: "musi być parzyste"
+      taken: "zostało już zajęte"
+      record_invalid: "Negatywne sprawdzenie poprawności: %{errors}"
+    template: &errors_template
+      header:
+        one: "%{model} nie został zachowany z powodu jednego błędu"
+        other: "%{model} nie został zachowany z powodu %{count} błędów"
+      body: "Błędy dotyczą następujących pól:"
+
+  activerecord:
+    models:
+      book: "Książka"
+      category: "Kategoria"
+    attributes:
+      created_at: "Stworzony"
+      updated_at: "Zaktualizowany"
+
+      book:
+        title: "Tytuł"
+        author: "Autor"
+        details: "Szczegóły"
+        category: "Kategoria"
+        category_id: "Kategoria"
+
+      copy:
+        index: "Indeks"
+        publication: "Wydanie"
+        available: "Dostępna"
+        exists: "Istnieje?"
+
+      order:
+        from: "Data wypożyczenia"
+        to: "Data zwrotu"
+        due: "Należy zwrócić przed"
+        borrowers_name: "Imię i nazwisko"
+        borrowers_contact: "Dane kontaktowe"
+        notes: "Uwagi"
+
+      user:
+        phone: "Telefon"
+        email: "Email"
+        name: "Imię i Nazwisko"
+        password: "Hasło"
+        remember_me: "Zapamiętaj mnie"
+        password_confirmation: "Powtórz hasło"
+
+    errors:
+      messages:
+        <<: *errors_messages
+      template:
+        <<: *errors_template
+
+      full_messages:
+        format: "%{attribute} %{message}"

@@ -1,0 +1,14 @@
+= simple_form_for(@book) do |f|
+  = f.input :title, :input_html => { :class => :span9 }
+  = f.input :author, :input_html => { :class => :span9 }
+  = f.input :details, :input_html => { :class => :span9 }
+  = f.input :category_id, :collection => @categories, :input_html => { :class => :span9 }
+
+  %hr
+  = render :partial => 'copies'
+
+  -#= f.simple_fields_for :copies, @copies do |c|
+    -#= render :partial => 'copy', :locals => { :c => c }
+
+  .actions
+    = f.button :submit, :class => "btn success"

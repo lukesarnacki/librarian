@@ -1,0 +1,44 @@
+.modal-header#borrow-book
+  h3= t(".reserve", title: @book.title)
+.modal-body
+  - if user_signed_in?
+    = render partial: 'reserve'
+  - else
+    #accordion.panel-group
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            = link_to t('.have_account_html'), '#loginWithReservationOption',
+              data: { parent: '#accordion', toggle: 'collapse' }
+        #loginWithReservationOption.panel-collapse.collapse
+          .panel-body= render partial: 'login_and_reserve'
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            = link_to t('.want_account_html'), '#registerWithReservationOption',
+              data: { parent: '#accordion', toggle: 'collapse' }
+        #registerWithReservationOption.panel-collapse.collapse
+          .panel-body
+            = render partial: 'register_and_reserve'
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            = link_to t('.dont_want_account_html'), '#anonymousReservationOption',
+              data: { parent: '#accordion', toggle: 'collapse' }
+        #anonymousReservationOption.panel-collapse.collapse
+          .panel-body
+            = render partial: 'anonymous_reservation'
+  hr
+  .row
+    .col-xs-6
+      dl
+        dt= t('.title')
+        dd= @book.title
+        dt= t('.author')
+        dd= @book.author
+    .col-xs-6
+      dl
+        dt= t('.category')
+        dd= @book.category
+        dt= t('.details')
+        dd= @book.details.present? ? @book.details : t('none')

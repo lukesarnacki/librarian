@@ -1,0 +1,63 @@
+@import "bootstrap";
+
+.weak {
+  color: #999;
+}
+
+.datepicker {
+  z-index: 1051 !important;
+}
+
+.form-inline {
+  .form-group {
+    margin-right: 10px;
+  }
+}
+
+.modal {
+  button.close-modal {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    z-index: 1;
+  }
+}
+
+.alert-error {
+  @extend .alert-danger;
+}
+
+.alert-notice {
+  @extend .alert-warning;
+}
+
+hr.hr-sm {
+  margin: 10px 0;
+}
+
+hr.hr-xs {
+  margin: 5px 0;
+}
+
+hr.hr-lg {
+  margin: 25px 0;
+}
+
+dl {
+  dd {
+    margin-left: 18px;
+    display: list-item;
+    list-style-type: square;
+  }
+}
+
+.callout {
+
+}
+/*bg-primary">...</p>*/
+/*bg-success">...</p>*/
+/*bg-info">...</p>*/
+/*bg-warning">...</p>*/
+/*bg-danger">...</p>*/
+
+

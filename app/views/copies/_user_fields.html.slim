@@ -1,0 +1,20 @@
+.user-fields
+  .row.jquery-ui
+    = f.simple_fields_for :user, @user do |user|
+      .col-xs-6
+        .form-group
+          = f.label :name, t('.name')
+          .input-group.string.required.order-anonymous-user-name
+            = user.input_field :name, id: 'user-name'
+            span.input-group-btn
+              button.btn.btn-danger.hidden#remove-autocompleted-user type="button"
+                span.glyphicon.glyphicon-remove
+
+      .col-xs-6
+        = user.input :email, label: t('.email'), input_html: { id: 'user-email' }
+  .row
+    = f.simple_fields_for :user, @user do |user|
+      .col-xs-6
+        = user.input :phone, label: t('.phone'), input_html: { id: 'user-phone' }
+
+  hr.hr-sm

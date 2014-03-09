@@ -1,0 +1,6 @@
+- @reservations.each do |reservation|
+  .reservation.form-group
+    .radio
+      = radio_button_tag 'order[user_id]', reservation.user.id, @reservations.first.id == reservation.id, :class => 'order_user_id'
+      = reservation_user_label(reservation.user)
+  hr.hr-sm

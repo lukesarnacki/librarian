@@ -1,0 +1,28 @@
+tr id="book-#{book.id}" class=book_class(book)
+  td.title
+    = book.title
+
+  td.author= book.author
+  td.category= book.category.name if book.category.present?
+  td.available-count= copies_count(book)
+  - if can? :manage, :all || defined?(admin) && admin
+    td.reservations-count class=reserved_html_class(book)
+      span.count= reservations_count = reservations_count(book)
+      - if reservations_count > 0
+        = link_to book_reservations_path(book) do
+          span.glyphicon.glyphicon-list-alt
+    td.borrowed= borrowed_count(book)
+    td.available= available_copies(book)
+    td.unavailable= unavailable_copies(book)
+  td.reserve
+    - if book.reserved_for?(current_user)
+      strong.reserved.text-success= t('.reserved')
+    - else
+      - if book.available?
+        = link_to t('.reserve'), reserve_book_path(book),
+          class: 'btn btn-primary',
+          data: { toggle: :modal,
+            target: '#mainModal', backdrop: 'static', keyboard: false,
+            remote: reserve_book_path(book)}
+      - else
+        span.none= t("none").capitalize

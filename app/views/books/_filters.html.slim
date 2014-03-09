@@ -1,0 +1,11 @@
+#filters
+  = simple_form_for @q, as: :q, url: books_path,
+    html: { class: 'form-inline', method: :get, id: 'search-books' } do |f|
+
+    = f.input :title, label: false,
+      input_html: { placeholder: t('.title_prompt') }
+    = f.input :category_id, collection: @categories, prompt: t('.category_prompt'),
+      label: false, as: :select, required: false
+    = f.submit t('.search'), class: 'btn btn-primary'
+
+  hr

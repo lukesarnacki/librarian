@@ -1,0 +1,28 @@
+.register
+  = simple_form_for :reservation_builder,
+    url: book_reservations_path(@book),
+    remote: request.xhr?,
+    html: { class: "form-stacked", id: "register-and-reserve" } do |f|
+
+    = f.simple_fields_for :user, @reservation_builder.user do |f|
+      .container-fluid
+        .row.form-group
+          .col-xs-6= f.input :name, required: true, autofocus: true, input_html: { class: 'col-xs-6' }
+          .col-xs-6= f.input :email, required: true, autofocus: true, input_html: { class: 'col-xs-6' }
+        .row.form-group
+          .col-xs-6= f.input :phone, required: false, autofocus: true, input_html: { class: 'col-xs-6' }
+        .row.form-group
+          .col-xs-6= f.input :password, required: true, input_html: { class: 'col-xs-6' }
+          .col-xs-6= f.input :password_confirmation, required: true, input_html: { class: 'col-xs-6' }
+    = f.simple_fields_for :reservation, @reservation do |f|
+      .container-fluid
+        .row.form-group
+          .col-xs-12= f.input :notes, input_html: { class: 'col-xs-12' }, label: t('.notes')
+    .container-fluid
+      .row.form-group
+        .col-xs-12
+          = f.submit t('.submit'),
+            class: 'btn btn-primary loading',
+            name: 'register',
+            data: { 'loading-text' => t('loading') }
+

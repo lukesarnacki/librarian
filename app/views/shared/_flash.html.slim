@@ -1,0 +1,7 @@
+- if flash
+  - flash.each do |type, message|
+    div.alert.alert-message.alert-dismissable id="alert-#{type}" class="alert-#{type}"
+      button.close type="button" class="close" data-dismiss="alert" aria-hidden="true" &times
+      p
+        = message.html_safe
+

@@ -1,0 +1,16 @@
+table.table.books
+  thead
+    tr
+      th.title= t('.title')
+      th.author= t('.author')
+      th.category= t('.category')
+      th.available-count= t('.copies_count')
+      - if can? :manage, :all
+        th.reserved= t('.reserved_count')
+        th.borrowed= t('.borrowed_count')
+        th.available= t('.to_be_borrowed')
+        th.unavailable= t('.borrowed')
+      th.reserve
+        = t('.reserve')
+  tbody
+    = render partial: 'book', collection: @books

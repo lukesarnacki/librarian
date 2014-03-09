@@ -1,0 +1,36 @@
+.navbar.navbar-default.main-nav
+  .container-fluid
+    // Brand and toggle get grouped for better mobile display
+    .navbar-header
+      button.navbar-toggle(type="button" data-toggle="collapse"
+                           data-target="#bs-example-navbar-collapse-1")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="#" = t('project_name')
+
+
+    .collapse.navbar-collapse#main-nav-collapse
+      ul.nav.navbar-nav
+        li.active
+        li= link_to t('menu.home'), root_path
+        li= link_to t('menu.books'), books_path
+        li= link_to t('menu.about'), '#'
+        li= link_to t('menu.skg_site'), 'http://skg.uw.edu.pl/', :target => '_blank'
+      - if user_signed_in?
+        ul.nav.navbar-nav.navbar-right
+          li
+            = link_to current_user.name, '#', :class => 'dropdown-toggle'
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              Dropdown
+              b.caret
+            ul.dropdown-menu
+              li= link_to t(".logout"), destroy_user_session_path, :method => :delete
+      - else
+        ul.nav.navbar-nav.navbar-right
+          li= link_to t('.login'), new_user_session_path
+          li.navbar-text= t(".or")
+          li= link_to t('.register'), new_user_registration_path
+

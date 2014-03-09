@@ -1,0 +1,14 @@
+<% if @reservation_builder.reservation.new_record? %>
+  <% if @just_signed_in %>
+    $('.main-nav').replaceWith("<%= j render partial: 'shared/header' %>")
+  <% end %>
+  $('.alert-message').remove();
+  $(".alert-message").alert()
+  $('#mainModal .modal-body').prepend("<%= j render :partial => 'shared/flash', :locals => { :flash => flash }  %>");
+  $('form#register-and-reserve').replaceWith("<%= j render :partial => 'books/register_and_reserve' %>");
+  $('form#login-and-reserve').replaceWith("<%= j render :partial => 'books/login_and_reserve' %>");
+<% else %>
+  $('tr#book-<%= @book.id %>').replaceWith('<%= j render :partial => 'books/book', :locals => { :book => @book, admin: !@just_signed_in } %>');
+  $('tr#book-<%= @book.id %>').effect("highlight", {}, 5000)
+  $('#mainModal').modal('hide');
+<% end %>
