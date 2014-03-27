@@ -1,0 +1,10 @@
+.modal-header
+  h3= t('.check_out', title: @copy.title)
+
+.modal-body
+  = render partial: 'check_in', locals: { order: @order }
+  hr
+  = render partial: 'copy', object: @copy
+
+
+  - else

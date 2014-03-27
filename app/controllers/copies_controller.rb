@@ -1,29 +1,37 @@
 class CopiesController < ApplicationController
 
   respond_to :html, :js
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:check_in]
   before_filter :load_book, :only => [:new, :edit, :create, :update]
 
-
-  def show
+  def available
     @copy = Copy.find(params[:id])
-    @order = @copy.available? ? @copy.orders.build : @copy.last_order
-    @user = @order.build_user
+    @check_out = CheckOutForm.new
+    @book = @copy.book
+    @reservations = @copy.reservations
+    @show_user_fields = @reservations.empty?
+    respond_with @copy, :layout => !request.xhr?
+  end
+
+  def borrowed
+    @copy = Copy.find(params[:id])
+    @order = @copy.last_order
     load_objects
     respond_with @copy, :layout => !request.xhr?
   end
 
   def check_out
-    @order = Order.create(params.require(:order).permit(:to, :copy_id, :from, :user_id))
-    @copy = @order.copy
-    load_objects
+    @copy = Copy.find(params[:id])
+    @check_out = CheckOutForm.new(params[:check_out])
+    @book = @copy.book
+    @reservations = @copy.reservations
 
-    unless @order.save
-      @new_user_chosen = params[:order][:user_id] == '0'
+    unless @check_out.save
+      @new_user_chosen = @check_out.user_id.blank?
       flash_message(:error, t("flash.actions.create.error"))
     end
 
-    respond_with @order, :location => request.xhr? ? check_out_copies_path : books_path, :layout => !request.xhr?
+    respond_with @check_out, :location => request.xhr? ? check_out_copy_path(@copy) : books_path, :layout => !request.xhr?
   end
 
   def check_in
@@ -80,6 +88,7 @@ class CopiesController < ApplicationController
   end
 
   def load_objects
+    @copy = @order.copy
     @book = @copy.book
     @reservations = @copy.reservations
     @show_user_fields = @reservations.empty?

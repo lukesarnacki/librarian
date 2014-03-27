@@ -10,7 +10,8 @@ class Book < ActiveRecord::Base
   after_save :remove_copies_without_book
 
   pg_search_scope :search_title,
-    against: [:title],
+    against: [:title, :author],
+    :associated_against => { copies: [:index] },
     using: [ :tsearch, :trigram ],
     ignoring: :accents
 
@@ -23,6 +24,11 @@ class Book < ActiveRecord::Base
     results = search_title(query.title) if query.title.present?
     results = results.where(category_id: query.category_id) if query.category_id.present?
     results
+  end
+
+  def self.only_with_copies
+    self.joins("INNER JOIN copies ON copies.book_id = books.id")
+        .includes(:copies).where(copies: { missing: false })
   end
 
   def available_copies_count

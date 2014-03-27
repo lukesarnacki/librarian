@@ -1,3 +1,5 @@
+ruby '2.1.1'
+
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -37,6 +39,10 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -48,5 +54,5 @@ end
 
 group :test, :development do
   gem 'byebug'
-  gem 'dotenv'
+  gem 'dotenv-rails'
 end

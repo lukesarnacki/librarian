@@ -42,7 +42,7 @@ module ApplicationHelper
 
     scope.map do |c|
       options = { id: c.id }
-      path = copy_path(options)
+      path = available ? available_copy_path(c) : borrowed_copy_path(c)
       link_to c.index, path,
         class: html_class,
         data: { toggle: :modal, target: '#mainModal', backdrop: 'static',

@@ -5,7 +5,7 @@ class CreateCopies < ActiveRecord::Migration
       t.string  :index, :null => false
       t.string  :publication
       t.integer :state, :default => 0, :null => false
-      t.boolean :exists, :null => false, :default => true
+      t.boolean :missing, :null => false, :default => false
       t.timestamps
     end
   end

@@ -8,7 +8,9 @@
   $('form#register-and-reserve').replaceWith("<%= j render :partial => 'books/register_and_reserve' %>");
   $('form#login-and-reserve').replaceWith("<%= j render :partial => 'books/login_and_reserve' %>");
 <% else %>
-  $('tr#book-<%= @book.id %>').replaceWith('<%= j render :partial => 'books/book', :locals => { :book => @book, admin: !@just_signed_in } %>');
-  $('tr#book-<%= @book.id %>').effect("highlight", {}, 5000)
-  $('#mainModal').modal('hide');
+  $(document).one('hidden.bs.modal', function() {
+    $('tr#book-<%= @book.id %>').replaceWith('<%= j render :partial => 'books/book', :locals => { :book => @book, admin: !@just_signed_in } %>');
+    $('tr#book-<%= @book.id %>').effect("highlight", {}, 5000)
+  });
+  $('.modal-content').html("<%= j render :partial => 'reservations/success' %>");
 <% end %>

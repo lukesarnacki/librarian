@@ -1,6 +1,14 @@
-- @reservations.each do |reservation|
-  .reservation.form-group
-    .radio
-      = radio_button_tag 'order[user_id]', reservation.user.id, @reservations.first.id == reservation.id, :class => 'order_user_id'
-      = reservation_user_label(reservation.user)
-  hr.hr-sm
+- if @reservations.any?
+  .reservations-radio-buttons
+    - @reservations.each do |reservation|
+      .reservation.form-group
+        .radio
+          = radio_button_tag 'check_out[user_id]', reservation.user.id, @reservations.first.id == reservation.id, :class => 'check_out_user_id'
+          = reservation_user_label(reservation.user)
+      hr.hr-sm
+
+    .lend-guest-user.form-group
+      .radio
+        = radio_button_tag 'check_out[user_id]', f.object.user_id.to_s, @new_user_chosen, id: 'guest_user_id'
+        = label_tag "guest_user_id", t('.another_user')
+    hr.hr-sm

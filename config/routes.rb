@@ -8,9 +8,10 @@ Librarian::Application.routes.draw do
       put :reserve
       get :reserve
     end
-    resources :copies, :only => [:new, :edit, :create, :update]
     resources :reservations, :only => [:create, :index]
   end
+
+  resources :reservations, :only => [:destroy]
 
   resources :users, :only => :index do
     member do
@@ -21,8 +22,8 @@ Librarian::Application.routes.draw do
   resources :copies, :only => [:show, :destroy] do
     member do
       patch :check_in
-    end
-    collection do
+      get :borrowed
+      get :available
       post :check_out
     end
   end

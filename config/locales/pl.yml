@@ -42,23 +42,57 @@ pl:
       team_html: '<a href="http://skg.uw.edu.pl">skg.uw.edu.pl</a>'
 
     email_header:
-      title: Witamy!
+      title: "Cześć,"
 
   user_mailer:
     welcome_email:
-      subject: "Witaj w bibliotece górskiej SKG!"
+      subject: "Witaj w Bibliotece Górskiej SKG!"
       welcome: "Cześć %{name},"
-      welcome_text: "Trzeba tu coś wpisać ;)."
+      welcome_text_html: |
+        <p>Założyłeś konto w serwisie Biblioteki Górskiej SKG. Mamy nadzieję,
+        że znajdziesz tu wiele ciekawych pozycji. Miłego czytania!</p>
+
+        <p>Jeśli to nie ty zakładałeś konto, daj nam znać na adres
+        <a href="mailto:biblioteka@skg.uw.edu.pl">biblioteka@skg.uw.edu.pl</a>
+        lub zignoruj tego maila.</p>
 
     reservation_created_email:
       welcome: "Cześć %{name},"
+      subject: "Zamówiłeś książkę w Bibliotece górskiej SKG."
+      info_text_html: |
+        <p>Gratulacje! Zamówiłeś pozycję <strong>"%{title}"</strong> i na pewno nie możesz
+        doczekać się odbioru. Biblioteka jest czynna w każdą <strong>środę</strong> w godzinach
+        <strong>17:00 - 19:00</strong>. Jeśli chciałbyś odebrać książkę w inny dzień, skontaktuj
+        się z nami pod adresem
+        <a href="mailto:biblioteka@skg.uw.edu.pl">biblioteka@skg.uw.edu.pl</a>.
+        </p>
+
+        <p>Życzymy miłego czytania!</p>
+
+  librarian_mailer:
+    reservation_created_email:
+      subject: "[Biblioteka] Nowe zamówienie"
+      info_text_html: |
+        <p>Nowe zamówienie:</p>
+        <dl>
+          <dt>Książka:</dt>
+          <dd><strong>%{title}, %{author}</strong></dd>
+          <dt>Imię i Nazwisko wypożyczającego:</dt>
+          <dd><strong>%{name}</strong></dd>
+          <dt>Adres email:</dt>
+          <dd><a href="mailto:%{email}">%{email}</a></dd>
+          <dt>Telefon:</dt>
+          <dd>%{phone}</dd>
+          <dt>Uwagi:</dt>
+          <dd>%{notes}</dd>
+        <dl>
 
 
   books:
     filters:
       search: "Szukaj"
       category: "Kategoria"
-      title_prompt: "Tytuł"
+      title_prompt: "Tytuł / Autor / ISBN"
       category_prompt: "Wybierz kategorię"
     login_and_reserve:
       submit: "Zaloguj się i zamów książkę"
@@ -105,8 +139,8 @@ pl:
       title: "Nowa książka"
 
   copies:
-    show:
-      check_out: "Wypożycz: %{title}"
+    available:
+      title: "Wypożycz: %{title}"
       lend_book: "Wypożycz książkę"
     copy:
       title: "Tytuł:"
@@ -133,6 +167,21 @@ pl:
       title: "Nowy egzemplarz"
     edit:
       title: "Edytuj egzemplarz"
+
+  reservations:
+    success:
+      title: "Zamówiłeś %{title}!"
+      info_html: |
+        <p>Gratulacje! Zamówiłeś pozycję <strong>"%{title}"</strong> i na pewno nie możesz
+        doczekać się odbioru. Biblioteka jest czynna w każdą <strong>środę</strong> w godzinach
+        <strong>17:00 - 19:00</strong>. Jeśli chciałbyś odebrać książkę w inny dzień, skontaktuj
+        się z nami pod adresem
+        <a href="mailto:biblioteka@skg.uw.edu.pl">biblioteka@skg.uw.edu.pl</a>.
+        </p>
+    index:
+      title: "Zamówienia książki \"%{title}\""
+      cancel: "Anuluj"
+      confirm: "Na pewno? Tej czynności nie możesz"
 
   devise:
     sessions:
@@ -315,7 +364,11 @@ pl:
       order:
         create: 'Wypożycz książkę'
         submit: 'Wypożycz książkę'
-        update: 'Zwróć książkę'
+        update: 'Przyjmij zwrot'
+      check_out:
+        submit: "Wypożycz"
+        create: "Wypożycz"
+        update: "Wypożycz"
 
 
   errors:

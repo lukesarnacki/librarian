@@ -1,0 +1,8 @@
+.modal-header
+  h3= t('.title', title: @book.title)
+
+.modal-body
+  = t('.info_html', title: @book.title)
+
+.modal-footer
+  .button.btn.btn-default type="button" data-dismiss="modal" OK

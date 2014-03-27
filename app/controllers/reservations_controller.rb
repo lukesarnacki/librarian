@@ -3,6 +3,18 @@ class ReservationsController < ApplicationController
   respond_to :html, :js
   before_filter :set_auth_type, only: [:create]
 
+  def index
+    @book = Book.find(params[:book_id])
+    @reservations = @book.reservations
+    render :index, layout: !request.xhr?
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @book = @reservation.book
+    @reservation.destroy
+  end
+
   def create
     @book = Book.find(params[:book_id])
     @just_signed_in = false

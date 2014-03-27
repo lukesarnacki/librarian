@@ -17,9 +17,10 @@
 .modal {
   button.close-modal {
     position: absolute;
-    right: 10px;
-    top: 5px;
+    right: 12px;
+    top: 12px;
     z-index: 1;
+    font-size: 26px;
   }
 }
 
@@ -49,6 +50,10 @@ dl {
     display: list-item;
     list-style-type: square;
   }
+}
+
+.has-error .input-group-btn {
+  vertical-align: top;
 }
 
 .callout {

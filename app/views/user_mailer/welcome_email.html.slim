@@ -1,7 +1,8 @@
 = render( partial: 'shared/email_header',
-          locals: { title: t('.welcome', name: 'Lukasz') })
+          locals: { title: t('.welcome', name: @user.name) })
 tr
   td style=("font-family: Georgia, Times, \"Times New Roman\", serif;")
-    p= t('.welcome_text')
+    p= t('.welcome_text_html')
+
 = render partial: 'shared/email_footer'
 

@@ -9,7 +9,9 @@ tr id="book-#{book.id}" class=book_class(book)
     td.reservations-count class=reserved_html_class(book)
       span.count= reservations_count = reservations_count(book)
       - if reservations_count > 0
-        = link_to book_reservations_path(book) do
+        = link_to book_reservations_path(book), data: { toggle: :modal,
+            target: '#mainModal', backdrop: 'static', keyboard: false,
+            remote: book_reservations_path(book) } do
           span.glyphicon.glyphicon-list-alt
     td.borrowed= borrowed_count(book)
     td.available= available_copies(book)

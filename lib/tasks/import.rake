@@ -21,7 +21,7 @@ namespace :books do
       copy ||= book.copies.create!(
         index: row['index'].strip,
         publication: row['year'].try(:strip),
-        exists: row['found'].downcase.strip == "tak"
+        missing: row['found'].downcase.strip != "tak"
       )
 
     end

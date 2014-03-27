@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.scoped
-    @users = @users.search(params[:autocomplete]) if params[:autocomplete].present?
+    @users = @users.autocomplete_search(params[:autocomplete]) if params[:autocomplete].present?
     respond_with @users
   end
 

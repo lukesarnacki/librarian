@@ -1,0 +1,12 @@
+.modal-header
+  h3= t('.title', title: @book.title)
+
+.modal-body
+  ul
+    - @reservations.each do |r|
+      li
+        span.user.col-xs= [r.user.name, r.user.email, r.user.phone].compact.join(', ')
+        span.actions.col-xs.col-xs-offset-1
+          = link_to t('.cancel'), reservation_path(r),
+                    class: 'btn btn-danger btn-sm', method: :delete,
+                    confirm: t('.confirm'), remote: true

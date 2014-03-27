@@ -1,20 +1,26 @@
-.user-fields
+.user-fields style="#{ 'display: none' if @reservations.any? }"
   .row.jquery-ui
-    = f.simple_fields_for :user, @user do |user|
+    = f.simple_fields_for @check_out.register_user_form do |ruf|
       .col-xs-6
-        .form-group
-          = f.label :name, t('.name')
-          .input-group.string.required.order-anonymous-user-name
-            = user.input_field :name, id: 'user-name'
+        /= ruf.input :name, label: t('.name'),
+                    /input_html: { id: 'user_name' },
+                    /wrapper_html: { class: 'order-guest-user-name' }
+        .form-group class="#{'has-error' if ruf.object.errors[:name].present?}"
+          = ruf.label :name, t('.name'), class: 'control-label', required: true
+          .string.required.order-guest-user-name
+            = ruf.input_field :name, id: 'user-name', class: 'form-control'
+            = ruf.error :name, id: 'register_user_form_name_error'
             span.input-group-btn
               button.btn.btn-danger.hidden#remove-autocompleted-user type="button"
                 span.glyphicon.glyphicon-remove
 
       .col-xs-6
-        = user.input :email, label: t('.email'), input_html: { id: 'user-email' }
+        = ruf.input :email, label: t('.email'), input_html: { id: 'user-email' }
   .row
-    = f.simple_fields_for :user, @user do |user|
+    = f.simple_fields_for @check_out.register_user_form do |ruf|
       .col-xs-6
-        = user.input :phone, label: t('.phone'), input_html: { id: 'user-phone' }
+        = ruf.input :phone, label: t('.phone'), input_html: { id: 'user-phone' }
+
+  = hidden_field_tag 'check_out[user_id]', nil, disabled: true, id: 'autocompleted-user-id'
 
   hr.hr-sm

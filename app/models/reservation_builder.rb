@@ -32,7 +32,14 @@ class ReservationBuilder
   def save(params = {})
     self.params = ActionController::Parameters.new(params)
     authenticate_and_build_reservation
-    valid? && reservation.save
+    saved = valid? && reservation.save
+    send_emails if saved
+    saved
+  end
+
+  def send_emails
+    UserMailer.reservation_created_email(reservation).deliver
+    LibrarianMailer.reservation_created_email(reservation).deliver
   end
 
   def flash

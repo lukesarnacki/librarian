@@ -1,0 +1,10 @@
+= render partial: 'shared/email_header'
+
+tr
+  td style=("font-family: Georgia, Times, \"Times New Roman\", serif;")
+    p= t('.info_text_html',
+          title: @book.title, name: @user.name, author: @book.author,
+          email: @user.email, phone: @user.phone, notes: @reservation.notes)
+
+= render partial: 'shared/email_footer'
+

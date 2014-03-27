@@ -1,0 +1,5 @@
+pl:
+  simple_form:
+    labels:
+      check_out:
+        notes: "Uwagi"

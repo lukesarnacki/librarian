@@ -1,0 +1,5 @@
+$('#mainModal').modal('hide');
+$(document).one('hidden.bs.modal', function() {
+  $('tr#book-<%= @book.id %>').replaceWith('<%= j render :partial => 'books/book', :locals => { :book => @book, admin: !@just_signed_in } %>');
+  $('tr#book-<%= @book.id %>').effect("highlight", {}, 5000)
+});

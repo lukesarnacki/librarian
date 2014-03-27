@@ -3,6 +3,7 @@ class Copy < ActiveRecord::Base
   has_many :reservations, :through => :book
   has_many :orders
   validates :index, :presence => true
+  default_scope { where(missing: false) }
 
   delegate :title, :author, :details, :category, :to => :book
 

@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(version: 20140323125017) do
   end
 
   create_table "copies", force: true do |t|
-    t.integer  "book_id",                    null: false
-    t.string   "index",                      null: false
+    t.integer  "book_id",                     null: false
+    t.string   "index",                       null: false
     t.string   "publication"
-    t.integer  "state",       default: 0,    null: false
-    t.boolean  "exists",      default: true, null: false
+    t.integer  "state",       default: 0,     null: false
+    t.boolean  "missing",     default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
