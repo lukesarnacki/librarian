@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :reservations
-  has_many :orders, :foreign_key => :user_id
+  has_many :reservations, dependent: :destroy
+  has_many :orders, :foreign_key => :user_id, dependent: :destroy
 
   validates :email, :uniqueness => true, :presence => true
   validates :name, :presence => true
