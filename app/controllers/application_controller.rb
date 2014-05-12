@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :notice => exception.message
+    redirect_to main_app.root_url, :alert => exception.message
   end
 
   def flash_message(type, message)

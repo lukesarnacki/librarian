@@ -4,8 +4,8 @@ class Book < ActiveRecord::Base
   belongs_to :category
   has_many :copies
   has_many :reservations
-  validates :title, :category_id, :presence => true
-  accepts_nested_attributes_for :copies
+  validates :title, :category_id, presence: true
+  accepts_nested_attributes_for :copies, allow_destroy: true
 
   after_save :remove_copies_without_book
 

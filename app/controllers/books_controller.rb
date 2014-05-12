@@ -7,7 +7,8 @@ class BooksController < ApplicationController
   def index
     @q = Search.new(params[:q])
     @books = Book.only_with_copies.search(@q)
-    @books = @books.order('title ASC').page params[:page]
+    @books = @books.select('distinct books.*')
+                   .order('title ASC').page params[:page]
     @categories = Category.scoped
 
     respond_to do |format|
