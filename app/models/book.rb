@@ -20,7 +20,7 @@ class Book < ActiveRecord::Base
   end
 
   def self.search(query)
-    results = self.scoped
+    results = self.select("distinct books.*")
     results = search_title(query.title) if query.title.present?
     results = results.where(category_id: query.category_id) if query.category_id.present?
     results
