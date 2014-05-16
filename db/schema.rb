@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323125017) do
+ActiveRecord::Schema.define(version: 20140516211449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,11 +34,11 @@ ActiveRecord::Schema.define(version: 20140323125017) do
   end
 
   create_table "copies", force: true do |t|
-    t.integer  "book_id",                     null: false
-    t.string   "index",                       null: false
+    t.integer  "book_id",                             null: false
+    t.string   "index",                               null: false
     t.string   "publication"
-    t.integer  "state",       default: 0,     null: false
-    t.boolean  "missing",     default: false, null: false
+    t.integer  "state",               default: 0,     null: false
+    t.boolean  "found_in_collection", default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

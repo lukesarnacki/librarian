@@ -3,7 +3,6 @@ class Copy < ActiveRecord::Base
   has_many :reservations, :through => :book
   has_many :orders
   validates :index, :presence => true
-  default_scope { where(missing: false) }
 
   delegate :title, :author, :details, :category, :to => :book
 
@@ -25,5 +24,9 @@ class Copy < ActiveRecord::Base
 
   def last_order
     self.orders.order('created_at DESC').first
+  end
+
+  def overdue?
+    last_order.to > Time.current
   end
 end

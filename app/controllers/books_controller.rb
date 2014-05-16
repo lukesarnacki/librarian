@@ -8,6 +8,12 @@ class BooksController < ApplicationController
     @q = Search.new(params[:q])
     @books = Book.only_with_copies.search(@q)
     @books = @books.order('title ASC').page params[:page]
+    case params[:filter].to_s
+    when 'ordered'
+      @books = @books.borrowed
+    when 'reserved'
+      @books = @books.reserved
+    end
     @categories = Category.scoped
 
     respond_to do |format|

@@ -1,0 +1,14 @@
+h2.pull-left= t('.title')
+
+= link_to t('.edit'), edit_profile_path, class: 'btn btn-primary pull-right'
+
+.clearfix
+
+.well
+  dl
+    dt= t('.email')
+    dd= @user.email
+    dt= t('.name')
+    dd= @user.name
+    dt= t('.phone')
+    dd= @user.phone.present? ? @user.phone : content_tag(:span, t(".none"), class: 'weak')

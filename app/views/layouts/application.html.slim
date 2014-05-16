@@ -16,8 +16,10 @@ html
         = yield :hero_unit
         = yield
 
-      footer
-        p © Biblioteka Górska SKG
+    footer#footer
+      .container
+        .text-muted
+          p © Biblioteka Górska SKG
 
     = render partial: 'shared/js_data'
     = render partial: 'shared/modal'

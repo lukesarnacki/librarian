@@ -12,3 +12,12 @@
     = f.submit t('.search'), class: 'btn btn-primary'
 
   hr
+
+  - if user_signed_in? && current_user.admin?
+    .nav.nav-tabs
+      li class=filter_class(params, :all)
+        = link_to t('.all'), params.merge(filter: :all)
+      li class=filter_class(params, :reserved)
+        = link_to t('.reserved'), params.merge(filter: :reserved)
+      li class=filter_class(params, :ordered)
+        = link_to t('.ordered'), params.merge(filter: :ordered)

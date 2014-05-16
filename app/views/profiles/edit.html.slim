@@ -1,0 +1,27 @@
+h2= t('.title')
+hr
+
+= simple_form_for @user, url: profile_path, html: { method: :put } do |f|
+
+  fieldset
+    legend= t('.basic_info')
+
+    = f.input :name
+    = f.input :email, as: :email
+    = f.input :phone
+
+    = f.submit t('.submit'), class: 'btn btn-success'
+
+  /hr
+
+/  fieldset
+    legend= t('.change_password')
+/
+    = f.input :old_password
+    = f.input :password
+    = f.input :password_confirmation
+
+    = f.submit t('.password_submit'), class: 'btn btn-success'
+
+
+

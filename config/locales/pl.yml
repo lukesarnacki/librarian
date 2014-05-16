@@ -30,12 +30,35 @@ pl:
         Biblioteki stale napływają nowiutkie egzemplarze pachnące jeszcze farbą
         drukarską."
 
+  profiles:
+    show:
+      title: "Twoje konto"
+      email: "Adres email:"
+      name: "Imię i nazwisko:"
+      phone: "Numer telefonu:"
+      none: "brak"
+      edit: "Edytuj dane"
+      destroy: "Usuń konto"
+
+    edit:
+      title: "Edycja danych"
+      basic_info: "Podstawowe dane"
+      change_password: "Zmiana hasła"
+      password_submit: "Zmień hasło"
+      submit: "Zapisz dane"
+      success: "Dzięki! Zapisaliśmy poprawnie Twoje dane."
+      failure: "Ups, nie wypełniłeś wszystkich pól poprawnie. Popraw błędy i spróbuj ponownie."
+
   shared:
     header:
       or: "lub"
       login: "Zaloguj się"
       register: "Zarejestruj się"
       logout: "Wyloguj się"
+      profile: "Twój profil"
+      reservations: "Twoje rezerwacje"
+      orders: "Twoje wypożyczenia"
+      admin: "Panel Administracyjny"
 
     email_footer:
       regards: Pozdrawiamy,
@@ -94,6 +117,9 @@ pl:
       category: "Kategoria"
       title_prompt: "Tytuł / Autor / ISBN"
       category_prompt: "Wybierz kategorię"
+      all: "Wszytkie"
+      reserved: "Zamówione"
+      ordered: "Wypożyczone"
     login_and_reserve:
       submit: "Zaloguj się i zamów książkę"
       notes: "Uwagi do tego zamówienia"
@@ -181,7 +207,7 @@ pl:
     index:
       title: "Zamówienia książki \"%{title}\""
       cancel: "Anuluj"
-      confirm: "Na pewno? Tej czynności nie możesz"
+      confirm: "Na pewno? Tej czynności nie możesz cofnąć."
 
   devise:
     sessions:
@@ -438,6 +464,7 @@ pl:
         password: "Hasło"
         remember_me: "Zapamiętaj mnie"
         password_confirmation: "Powtórz hasło"
+        old_password: "Obecne hasło"
 
     errors:
       messages:

@@ -28,19 +28,26 @@ module ApplicationHelper
     'reserved' if book.reserved?
   end
 
+  def filter_class(params, filter)
+    'active' if params[:filter].to_s == filter.to_s || (filter == :all && params[:filter].blank?)
+  end
+
   private
 
   def copies(book, available = true)
     html_class = if available
                    'available btn btn-success btn-xs check-out btn-copy'
                  else
-                   'unavailable btn btn-danger btn-xs check-in btn-copy'
+                   'unavailable btn btn-xs check-in btn-copy'
                  end
 
     scope = book.copies
     scope = available ? scope.available : scope.borrowed
 
     scope.map do |c|
+      unless available
+        html_class += c.overdue? ? ' btn-danger' : ' btn-warning'
+      end
       options = { id: c.id }
       path = available ? available_copy_path(c) : borrowed_copy_path(c)
       link_to c.index, path,

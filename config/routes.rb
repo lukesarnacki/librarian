@@ -3,6 +3,8 @@ Librarian::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, controllers: { registrations: "users/registrations" }
 
+  resource :profile
+
   resources :books, only: [:index] do
     member do
       put :reserve

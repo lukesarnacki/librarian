@@ -26,9 +26,17 @@ class Book < ActiveRecord::Base
     results
   end
 
+  def self.borrowed
+    where(copies: { state: 0 })
+  end
+
+  def self.reserved
+    joins(:reservations)
+  end
+
   def self.only_with_copies
     self.joins("INNER JOIN copies ON copies.book_id = books.id")
-        .includes(:copies).where(copies: { missing: false })
+        .includes(:copies).where(copies: { found_in_collection: true })
   end
 
   def available_copies_count

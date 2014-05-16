@@ -17,7 +17,7 @@ RailsAdmin.config do |config|
       field :index
       field :book
       field :publication
-      field :missing
+      field :found_in_collection
       exclude_fields :state
     end
 
@@ -25,7 +25,7 @@ RailsAdmin.config do |config|
       field :book
       field :index
       field :publication
-      field :missing
+      field :found_in_collection
       exclude_fields :state
     end
   end
