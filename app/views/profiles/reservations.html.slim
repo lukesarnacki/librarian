@@ -1,0 +1,21 @@
+h2= t('.heading')
+
+- if @reservations.any?
+  table.table.table-stripped.profile-reservations-list
+    tr
+      th.title= t('.title')
+      th.author= t('.author')
+      th.created_at= t('.created_at')
+      th.actions
+
+    - @reservations.each do |reservation|
+      tr
+        td.title= reservation.book.title
+        td.author= reservation.book.author
+        td.created_at= l(reservation.created_at, format: :short)
+        td.actions
+          = link_to profile_reservation_path(reservation),
+            method: :delete, class: 'btn btn-default cancel-reservation',
+            confirm: t('.cancel_confirmation') do
+            span.glyphicon.glyphicon-remove-circle>
+            = t('.cancel_reservation')

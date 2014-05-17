@@ -27,7 +27,7 @@ class Book < ActiveRecord::Base
   end
 
   def self.borrowed
-    where(copies: { state: 0 })
+    where("copies.order_id IS NOT NULL")
   end
 
   def self.reserved

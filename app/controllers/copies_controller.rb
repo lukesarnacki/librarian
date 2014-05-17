@@ -15,7 +15,8 @@ class CopiesController < ApplicationController
 
   def borrowed
     @copy = Copy.find(params[:id])
-    @order = @copy.last_order
+    @order = @copy.order
+    @order.to = Time.zone.today
     load_objects
     respond_with @copy, :layout => !request.xhr?
   end
@@ -37,7 +38,7 @@ class CopiesController < ApplicationController
   def check_in
     @order = Order.find(params[:id])
     @copy = @order.copy
-    @order.check_in(params[:order])
+    @order.check_in(params[:order].permit(:to))
 
     unless @order.valid?
       flash_message(:error, t("flash.actions.create.error"))

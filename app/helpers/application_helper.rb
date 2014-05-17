@@ -41,7 +41,7 @@ module ApplicationHelper
                    'unavailable btn btn-xs check-in btn-copy'
                  end
 
-    scope = book.copies
+    scope = book.copies.found_in_collection
     scope = available ? scope.available : scope.borrowed
 
     scope.map do |c|

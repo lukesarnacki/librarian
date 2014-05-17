@@ -41,6 +41,8 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'rails_admin'
 
+gem 'exception_notification'
+
 group :production do
   gem 'rails_12factor'
 end

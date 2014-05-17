@@ -23,6 +23,18 @@ class ProfilesController < ApplicationController
   end
 
   def reservations
+    @reservations = current_user.reservations
+  end
+
+  def orders
+    @orders = current_user.orders.ongoing
+  end
+
+  def destroy_reservation
+    current_user.reservations.find(params[:id]).destroy
+    flash[:notice] = t('profiles.reservations.destroy_notice')
+
+    respond_with current_user, location: books_path
   end
 
   private

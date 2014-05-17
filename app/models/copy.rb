@@ -2,31 +2,32 @@ class Copy < ActiveRecord::Base
   belongs_to :book, inverse_of: :copies
   has_many :reservations, :through => :book
   has_many :orders
+  belongs_to :order
   validates :index, :presence => true
 
   delegate :title, :author, :details, :category, :to => :book
 
-  state_machine :state, :initial => :available do
-    event :check_out do
-      transition available: :borrowed
-    end
-
-    event :check_in do
-      transition borrowed: :available
-    end
-
-    state :available, value: 1
-    state :borrowed, value: 0
+  def self.borrowed
+    where("order_id IS NOT NULL")
   end
 
-  scope :available, -> { where(state: 1) }
-  scope :borrowed, -> { where(state: 0) }
+  def self.available
+    where("order_id IS NULL")
+  end
 
-  def last_order
-    self.orders.order('created_at DESC').first
+  def self.found_in_collection
+    where(found_in_collection: true)
+  end
+
+  def check_in
+    update_attribute(:order_id, nil)
+  end
+
+  def check_out(order)
+    update_attribute(:order_id, order.id)
   end
 
   def overdue?
-    last_order.to > Time.current
+    order && order.overdue?
   end
 end

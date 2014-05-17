@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140516211449) do
+ActiveRecord::Schema.define(version: 20140517092407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140516211449) do
     t.boolean  "found_in_collection", default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
   end
 
   create_table "orders", force: true do |t|
@@ -52,6 +53,7 @@ ActiveRecord::Schema.define(version: 20140516211449) do
     t.string   "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
   create_table "reservations", force: true do |t|

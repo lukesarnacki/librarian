@@ -1,0 +1,19 @@
+h2= t('.heading')
+
+- if @orders.any?
+  table.table.table-stripped.profile-orders-list
+    tr
+      th.title= t('.title')
+      th.author= t('.author')
+      th.borrowed_on= t('.borrowed_on')
+      th.due= t('.due')
+
+    - @orders.each do |order|
+      tr
+        td.title= order.copy.title
+        td.author= order.copy.author
+        td.borrowed_on= l(order.from, format: :long)
+        td.due
+          span= l(order.due, format: :long)
+          - if order.overdue?
+            span.glyphicon.glyphicon-warning-sign.text-danger.overdue<

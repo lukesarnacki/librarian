@@ -56,14 +56,19 @@ dl {
   vertical-align: top;
 }
 
-.callout {
+.profile-reservations-list {
+  tbody tr td {
+    vertical-align: middle;
+  }
 
+  .btn.cancel-reservation:hover {
+    @extend .btn-danger;
+  }
 }
-/*bg-primary">...</p>*/
-/*bg-success">...</p>*/
-/*bg-info">...</p>*/
-/*bg-warning">...</p>*/
-/*bg-danger">...</p>*/
 
 
-
+.profile-orders-list {
+  .overdue {
+    font-size: 1.2em;
+  }
+}

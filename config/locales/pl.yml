@@ -49,6 +49,23 @@ pl:
       success: "Dzięki! Zapisaliśmy poprawnie Twoje dane."
       failure: "Ups, nie wypełniłeś wszystkich pól poprawnie. Popraw błędy i spróbuj ponownie."
 
+    reservations:
+      heading: "Twoje zamówienia"
+      title: "Tytuł"
+      author: "Autor"
+      created_at: "Data zamówienia"
+      cancel_reservation: "Anuluj zamówienie"
+      cancel_confirmation: "Na pewno chcesz anulować wybrane zamówienie?"
+      destroy_notice: "Twoje zamówienie zostało anulowane. Szkoda ;)."
+
+    orders:
+      heading: "Twoje wypożyczenia"
+      title: "Tytuł"
+      author: "Autor"
+      borrowed_on: "Data wypożyczenia"
+      due: "Data zwrotu"
+
+
   shared:
     header:
       or: "lub"
@@ -56,7 +73,7 @@ pl:
       register: "Zarejestruj się"
       logout: "Wyloguj się"
       profile: "Twój profil"
-      reservations: "Twoje rezerwacje"
+      reservations: "Twoje zamówienia"
       orders: "Twoje wypożyczenia"
       admin: "Panel Administracyjny"
 

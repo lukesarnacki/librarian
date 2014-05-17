@@ -87,4 +87,11 @@ Librarian::Application.configure do
     :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp
+
+  config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[Biblioteka Gorska] ",
+    :sender_address => %{"Biblioteka Gorska" <error@skg.uw.edu.pl>},
+    :exception_recipients => %w{sarniak@gmail.com}
+  }
 end

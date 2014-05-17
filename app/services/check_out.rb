@@ -8,8 +8,7 @@ class CheckOut
         user_id: attributes[:user_id],
         notes: attributes[:notes]
       )
-      order.copy.check_out
-      order.copy.reservations.where(:user_id => order.user).destroy_all
+      order.check_out
       order
     end
   end
