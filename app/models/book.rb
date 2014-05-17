@@ -12,7 +12,7 @@ class Book < ActiveRecord::Base
   pg_search_scope :search_title,
     against: [:title, :author],
     :associated_against => { copies: [:index] },
-    using: [ :tsearch, :trigram ],
+    using: { :tsearch => { }, :trigram => { :threshold => 0.2 } },
     ignoring: :accents
 
   def orders_count
