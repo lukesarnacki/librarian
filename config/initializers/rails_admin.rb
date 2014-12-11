@@ -48,13 +48,17 @@ RailsAdmin.config do |config|
       field :title
       field :author
       field :details
-      field :copies
+      field :copies do
+        required true
+      end
+      field :category
     end
 
     show do
       field :id
       field :title
       field :author
+      field :category
       field :created_at do
         strftime_format "%d.%m.%Y %H:%M"
       end

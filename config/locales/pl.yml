@@ -449,6 +449,7 @@ pl:
     models:
       book: "Książka"
       category: "Kategoria"
+      copy: "Egzemplarz"
     attributes:
       created_at: "Stworzony"
       updated_at: "Zaktualizowany"
